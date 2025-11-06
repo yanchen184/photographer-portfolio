@@ -32,16 +32,23 @@ jobs:
       env:
         CI: false
 
-    # Step 5: Deploy to gh-pages using git commands
+    # Step 5: Deploy to gh-pages using GitHub CLI
     - name: Deploy to gh-pages
       if: github.ref == 'refs/heads/master'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action Bot"
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-        git checkout --orphan gh-pages
+        
+        # Create gh-pages branch with dist contents
+        git checkout --orphan gh-pages-new
         git rm -rf .
         cp -r dist/* .
+        
+        # Add and commit
         git add .
-        git commit -m "Deploy to GitHub Pages"
-        git push -f origin gh-pages
+        git commit -m "Deploy to GitHub Pages" || echo "No changes to commit"
+        
+        # Push to gh-pages
+        git push -f origin gh-pages-new:gh-pages
