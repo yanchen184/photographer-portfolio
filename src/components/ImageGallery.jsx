@@ -11,7 +11,6 @@ const ImageGallery = ({ limit = null }) => {
   // Gallery images data
   const images = [
     { id: 1, url: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800', category: 'wedding', title: '浪漫婚禮' },
-    { id: 2, url: 'https://images.unsplash.com/photo-1543226589-56c77d9aef16?w=800', category: 'portrait', title: '人像攝影' },
     { id: 3, url: 'https://images.unsplash.com/photo-1560439513-74b037a25d84?w=800', category: 'commercial', title: '商業攝影' },
     { id: 4, url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800', category: 'landscape', title: '風景攝影' },
     { id: 5, url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800', category: 'wedding', title: '婚禮時刻' },

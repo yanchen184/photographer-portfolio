@@ -7,6 +7,8 @@ import './Navbar.css';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  
+  console.log('%c✅ Navbar rendered successfully', 'color: #f77062; font-size: 14px; font-weight: bold;');
 
   // Toggle mobile menu
   const toggleMenu = () => {

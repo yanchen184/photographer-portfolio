@@ -1,11 +1,13 @@
 // Hero section component with image slider
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './Hero.css';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const navigate = useNavigate();
 
   // Hero slides data
   const slides = [
@@ -44,6 +46,11 @@ const Hero = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
+  // Navigate to portfolio page
+  const handleExploreClick = () => {
+    navigate('/portfolio');
+  };
+
   return (
     <div className="hero">
       {/* Slides */}
@@ -62,7 +69,9 @@ const Hero = () => {
           >
             <h1 className="hero-title">{slide.title}</h1>
             <p className="hero-subtitle">{slide.subtitle}</p>
-            <button className="hero-button">探索作品</button>
+            <button className="hero-button" onClick={handleExploreClick}>
+              探索作品
+            </button>
           </motion.div>
         </div>
       ))}

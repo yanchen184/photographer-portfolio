@@ -4,6 +4,7 @@
   height: 100vh;
   min-height: 500px;
   overflow: hidden;
+  width: 100%;
 }
 
 .hero-slide {
@@ -146,23 +147,24 @@
   }
 
   .hero-content {
-    width: 95%;
+    width: 85%;
+    max-width: 280px;
     padding: 0 15px;
   }
 
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 0.5rem;
   }
 
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
     margin-bottom: 1.5rem;
   }
 
   .hero-button {
     padding: 12px 30px;
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .hero-nav {
@@ -197,23 +199,24 @@
   }
 
   .hero-content {
-    width: 100%;
+    width: 80%;
+    max-width: 260px;
     padding: 0 10px;
   }
 
   .hero-title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 0.3rem;
   }
 
   .hero-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     margin-bottom: 1rem;
   }
 
   .hero-button {
     padding: 10px 25px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .hero-nav {
