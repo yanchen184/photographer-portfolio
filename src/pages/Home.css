@@ -19,7 +19,7 @@
 
 .about-text {
   flex: 1;
-  min-width: 0; /* Prevent overflow */
+  min-width: 0;
 }
 
 .about-text h2 {
@@ -36,7 +36,7 @@
 
 .about-image {
   flex: 1;
-  min-width: 0; /* Prevent overflow */
+  min-width: 0;
   text-align: center;
 }
 
@@ -142,12 +142,14 @@
   padding: 20px 20px 10px;
   color: #333;
   margin: 0;
+  font-size: 1.3rem;
 }
 
 .service-card p {
   padding: 0 20px 20px;
   color: #666;
   margin: 0;
+  font-size: 0.95rem;
 }
 
 .home-services .btn-primary {
@@ -202,6 +204,14 @@
   .cta-content p {
     font-size: 1.1rem;
   }
+
+  .stats-grid {
+    gap: 30px;
+  }
+
+  .services-grid {
+    gap: 25px;
+  }
 }
 
 /* Mobile responsive */
@@ -233,7 +243,7 @@
 
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 25px;
   }
 
   .stat-card {
@@ -275,7 +285,17 @@
   }
 
   .service-card img {
-    height: 150px;
+    height: 180px;
+  }
+
+  .service-card h3 {
+    padding: 15px 15px 10px;
+    font-size: 1.1rem;
+  }
+
+  .service-card p {
+    padding: 0 15px 15px;
+    font-size: 0.9rem;
   }
 
   .home-testimonials {
@@ -307,10 +327,13 @@
 
   .about-text h2 {
     font-size: 1.75rem;
+    margin-bottom: 15px;
   }
 
   .about-text p {
     font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
   }
 
   .home-stats {
@@ -319,11 +342,16 @@
 
   .stats-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 15px;
+  }
+
+  .stat-card {
+    padding: 12px;
   }
 
   .stat-icon {
     font-size: 1.8rem;
+    margin-bottom: 10px;
   }
 
   .stat-value {
@@ -340,6 +368,7 @@
 
   .home-featured h2 {
     font-size: 1.75rem;
+    margin-bottom: 10px;
   }
 
   .home-services {
@@ -348,6 +377,13 @@
 
   .home-services h2 {
     font-size: 1.75rem;
+    margin-bottom: 10px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin: 20px 0;
   }
 
   .service-card {
@@ -355,17 +391,25 @@
   }
 
   .service-card img {
-    height: 120px;
+    height: 150px;
   }
 
   .service-card h3 {
-    font-size: 1.2rem;
-    padding: 15px 15px 8px;
+    padding: 12px 12px 8px;
+    font-size: 1rem;
   }
 
   .service-card p {
-    padding: 0 15px 15px;
-    font-size: 0.95rem;
+    padding: 0 12px 12px;
+    font-size: 0.85rem;
+  }
+
+  .home-testimonials {
+    padding: 40px 0;
+  }
+
+  .home-testimonials h2 {
+    font-size: 1.75rem;
   }
 
   .home-cta {
@@ -374,9 +418,11 @@
 
   .cta-content h2 {
     font-size: 1.5rem;
+    margin-bottom: 15px;
   }
 
   .cta-content p {
     font-size: 0.9rem;
+    margin-bottom: 20px;
   }
 }
