@@ -11,7 +11,6 @@ const Portfolio = () => {
   const categories = [
     { id: 'all', label: '全部' },
     { id: 'wedding', label: '婚禮' },
-    { id: 'portrait', label: '人像' },
     { id: 'commercial', label: '商業' },
     { id: 'landscape', label: '風景' },
     { id: 'event', label: '活動' }
@@ -20,15 +19,12 @@ const Portfolio = () => {
   // Portfolio items (extended gallery)
   const portfolioItems = [
     { id: 1, url: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800', category: 'wedding', title: '浪漫婚禮' },
-    { id: 2, url: 'https://images.unsplash.com/photo-1543226589-56c77d9aef16?w=800', category: 'portrait', title: '人像攝影' },
     { id: 3, url: 'https://images.unsplash.com/photo-1560439513-74b037a25d84?w=800', category: 'commercial', title: '商業攝影' },
     { id: 4, url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800', category: 'landscape', title: '山景' },
     { id: 5, url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800', category: 'wedding', title: '婚禮時刻' },
-    { id: 6, url: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=800', category: 'portrait', title: '肖像作品' },
     { id: 7, url: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800', category: 'commercial', title: '產品攝影' },
     { id: 8, url: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800', category: 'landscape', title: '自然風光' },
     { id: 9, url: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800', category: 'wedding', title: '幸福時光' },
-    { id: 10, url: 'https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=800', category: 'portrait', title: '情緒人像' },
     { id: 11, url: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800', category: 'commercial', title: '品牌形象' },
     { id: 12, url: 'https://images.unsplash.com/photo-1540390769625-2fc3f8b1d50c?w=800', category: 'event', title: '音樂節' }
   ];
