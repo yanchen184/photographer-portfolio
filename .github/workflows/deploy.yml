@@ -12,6 +12,8 @@ jobs:
     # Step 1: Checkout the code
     - name: Checkout code
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     # Step 2: Setup Node.js
     - name: Setup Node.js
@@ -30,11 +32,16 @@ jobs:
       env:
         CI: false
 
-    # Step 5: Deploy to gh-pages branch using JamesIves action
-    - name: Deploy to gh-pages branch
-      uses: JamesIves/github-pages-deploy-action@v4
+    # Step 5: Deploy to gh-pages using git commands
+    - name: Deploy to gh-pages
       if: github.ref == 'refs/heads/master'
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        branch: gh-pages
-        folder: dist
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action Bot"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+        git checkout --orphan gh-pages
+        git rm -rf .
+        cp -r dist/* .
+        git add .
+        git commit -m "Deploy to GitHub Pages"
+        git push -f origin gh-pages
