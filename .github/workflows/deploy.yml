@@ -4,6 +4,10 @@ on:
   push:
     branches: [ master ]
 
+permissions:
+  contents: write
+  pages: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -14,6 +18,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     # Step 2: Setup Node.js
     - name: Setup Node.js
@@ -35,22 +40,18 @@ jobs:
     # Step 5: Configure Git
     - name: Configure Git
       run: |
-        git config --global user.email "action@github.com"
-        git config --global user.name "GitHub Action Bot"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
 
     # Step 6: Deploy to gh-pages
     - name: Deploy to gh-pages
       if: github.ref == 'refs/heads/master'
       run: |
-        # Debug info
-        echo "Current branch: $(git branch -a)"
-        echo "Remote: $(git remote -v)"
-        
         # Create and switch to orphan branch
-        git checkout --orphan gh-pages-temp
+        git checkout --orphan gh-pages-new 2>/dev/null || git checkout gh-pages-new
         
         # Remove all tracked files
-        git rm -rf .
+        git rm -rf . 2>/dev/null || true
         
         # Copy dist contents
         cp -r dist/* .
@@ -58,10 +59,8 @@ jobs:
         # Stage all files
         git add .
         
-        # Commit (allow empty)
-        git commit -m "Deploy to GitHub Pages" --allow-empty
+        # Commit
+        git commit -m "Deploy: $(date)" --allow-empty
         
         # Force push to gh-pages
-        git push -f origin gh-pages-temp:gh-pages
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        git push -u -f origin gh-pages-new:gh-pages
