@@ -32,23 +32,36 @@ jobs:
       env:
         CI: false
 
-    # Step 5: Deploy to gh-pages using GitHub CLI
-    - name: Deploy to gh-pages
-      if: github.ref == 'refs/heads/master'
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # Step 5: Configure Git
+    - name: Configure Git
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action Bot"
+
+    # Step 6: Deploy to gh-pages
+    - name: Deploy to gh-pages
+      if: github.ref == 'refs/heads/master'
+      run: |
+        # Debug info
+        echo "Current branch: $(git branch -a)"
+        echo "Remote: $(git remote -v)"
         
-        # Create gh-pages branch with dist contents
-        git checkout --orphan gh-pages-new
+        # Create and switch to orphan branch
+        git checkout --orphan gh-pages-temp
+        
+        # Remove all tracked files
         git rm -rf .
+        
+        # Copy dist contents
         cp -r dist/* .
         
-        # Add and commit
+        # Stage all files
         git add .
-        git commit -m "Deploy to GitHub Pages" || echo "No changes to commit"
         
-        # Push to gh-pages
-        git push -f origin gh-pages-new:gh-pages
+        # Commit (allow empty)
+        git commit -m "Deploy to GitHub Pages" --allow-empty
+        
+        # Force push to gh-pages
+        git push -f origin gh-pages-temp:gh-pages
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
