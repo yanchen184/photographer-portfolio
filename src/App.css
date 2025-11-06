@@ -5,6 +5,12 @@
   box-sizing: border-box;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Segoe UI', 'Microsoft JhengHei', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
@@ -16,17 +22,20 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .main-content {
   flex: 1;
   padding-top: 80px; /* Navbar height */
+  width: 100%;
 }
 
 .container {
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 50px;
+  width: 100%;
 }
 
 /* Typography */
@@ -203,6 +212,10 @@ p {
 }
 
 @media screen and (max-width: 480px) {
+  .main-content {
+    padding-top: 80px;
+  }
+
   .container {
     padding: 0 20px;
   }
@@ -256,4 +269,3 @@ p {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
