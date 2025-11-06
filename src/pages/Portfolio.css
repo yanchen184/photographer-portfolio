@@ -1,8 +1,11 @@
 /* Portfolio page styling */
 .portfolio-page {
   min-height: 100vh;
-  padding: 60px 0 80px;
-  padding-top: 80px;
+  margin-top: 30px;
+}
+
+.portfolio-page .page-header {
+  margin-bottom: 60px;
 }
 
 .portfolio-filters {
@@ -39,7 +42,7 @@
 .portfolio-grid {
   max-width: 1300px;
   margin: 0 auto;
-  padding: 0 50px;
+  padding: 0 50px 80px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
@@ -97,7 +100,7 @@
 /* Tablet Responsive */
 @media (max-width: 1024px) {
   .portfolio-grid {
-    padding: 0 40px;
+    padding: 0 40px 80px;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
   }
@@ -110,8 +113,11 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .portfolio-page {
-    padding: 50px 0 80px;
-    padding-top: 70px;
+    margin-top: 20px;
+  }
+  
+  .portfolio-page .page-header {
+    margin-bottom: 40px;
   }
   
   .portfolio-filters {
@@ -125,7 +131,7 @@
   }
   
   .portfolio-grid {
-    padding: 0 20px;
+    padding: 0 20px 80px;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
   }
@@ -151,8 +157,11 @@
 /* Small Mobile Responsive */
 @media (max-width: 480px) {
   .portfolio-page {
-    padding: 40px 0 80px;
-    padding-top: 60px;
+    margin-top: 15px;
+  }
+  
+  .portfolio-page .page-header {
+    margin-bottom: 30px;
   }
   
   .portfolio-filters {
@@ -166,7 +175,7 @@
   }
   
   .portfolio-grid {
-    padding: 0 15px;
+    padding: 0 15px 80px;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
   }
