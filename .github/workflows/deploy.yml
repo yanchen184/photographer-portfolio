@@ -16,8 +16,6 @@ jobs:
     # Step 1: Checkout the code
     - name: Checkout code
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
 
     # Step 2: Setup Node.js
     - name: Setup Node.js
@@ -26,7 +24,7 @@ jobs:
         node-version: '20.x'
         cache: 'npm'
 
-    # Step 3: Install dependencies with npm install (not npm ci)
+    # Step 3: Install dependencies with npm install
     - name: Install dependencies
       run: npm install
 
@@ -42,31 +40,37 @@ jobs:
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
 
-    # Step 6: Delete existing gh-pages branch and create new one
+    # Step 6: Deploy to gh-pages
     - name: Deploy to gh-pages
       if: github.ref == 'refs/heads/master'
       run: |
-        # Delete the remote gh-pages branch first
-        git push origin --delete gh-pages 2>/dev/null || true
+        # Create a temporary directory
+        mkdir -p /tmp/deploy
         
-        # Create orphan branch
-        git checkout --orphan gh-pages
+        # Copy dist contents to temp directory
+        cp -r dist/* /tmp/deploy/
         
-        # Remove all files
-        git rm -rf . 2>/dev/null || true
+        # Create .nojekyll file
+        touch /tmp/deploy/.nojekyll
         
-        # Copy dist contents
-        cp -r dist/* .
-        cp dist/.gitkeep . 2>/dev/null || true
+        # Remove current branch tracking
+        git symbolic-ref --delete HEAD || true
         
-        # Create .nojekyll to tell GitHub Pages this is not a Jekyll site
-        touch .nojekyll
+        # Create new orphan branch
+        git checkout --orphan gh-pages 2>&1 | grep -v "Switched" || true
+        
+        # Remove all files from staging
+        git rm -rf . 2>&1 | grep -v "Removing" || true
+        
+        # Copy deploy files to working directory
+        cp -r /tmp/deploy/* .
+        cp /tmp/deploy/.nojekyll .
         
         # Stage all files
         git add .
         
-        # Commit
-        git commit -m "Deploy to GitHub Pages - $(date +'%Y-%m-%d %H:%M:%S')"
+        # Create commit
+        git commit -m "Deploy to GitHub Pages - build: $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
         
         # Push to gh-pages
-        git push -u origin gh-pages
+        git push -f origin gh-pages
