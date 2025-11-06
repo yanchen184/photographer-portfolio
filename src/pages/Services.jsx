@@ -30,7 +30,7 @@ const Services = () => {
       id: 2,
       title: '人像攝影',
       icon: '👤',
-      image: 'https://images.unsplash.com/photo-1543226589-56c77d9aef16?w=600',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600',
       description: '展現您最美的一面',
       features: [
         '專業形象照拍攝',
