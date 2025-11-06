@@ -16,6 +16,7 @@ body {
   color: #333;
   line-height: 1.6;
   background-color: #f8f9fa;
+  font-size: 16px;
 }
 
 .App {
@@ -27,7 +28,7 @@ body {
 
 .main-content {
   flex: 1;
-  padding-top: 80px; /* Navbar height */
+  padding-top: 80px;
   width: 100%;
 }
 
@@ -44,6 +45,7 @@ h1 {
   font-weight: 700;
   margin-bottom: 1rem;
   color: #1c1c1c;
+  line-height: 1.2;
 }
 
 h2 {
@@ -51,6 +53,7 @@ h2 {
   font-weight: 600;
   margin-bottom: 1.5rem;
   color: #2d2d2d;
+  line-height: 1.2;
 }
 
 h3 {
@@ -58,11 +61,14 @@ h3 {
   font-weight: 500;
   margin-bottom: 1rem;
   color: #333;
+  line-height: 1.2;
 }
 
 p {
   margin-bottom: 1rem;
   color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 /* Buttons */
@@ -79,6 +85,7 @@ p {
   transition: all 0.3s ease;
   cursor: pointer;
   text-align: center;
+  white-space: nowrap;
 }
 
 .btn-primary {
@@ -180,18 +187,18 @@ p {
   animation: fadeIn 0.6s ease-out;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 960px) {
+/* Tablet Responsive */
+@media screen and (max-width: 1024px) {
   .container {
-    padding: 0 30px;
+    padding: 0 40px;
   }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   h3 {
@@ -203,17 +210,26 @@ p {
   }
 
   .page-header h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 
   .page-header p {
     font-size: 1.1rem;
   }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
 }
 
-@media screen and (max-width: 480px) {
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
   .main-content {
-    padding-top: 80px;
+    padding-top: 70px;
   }
 
   .container {
@@ -222,29 +238,121 @@ p {
 
   h1 {
     font-size: 2rem;
+    margin-bottom: 0.8rem;
   }
 
   h2 {
     font-size: 1.75rem;
+    margin-bottom: 1.2rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
   }
 
   .btn-primary,
   .btn-secondary {
-    padding: 10px 20px;
+    padding: 10px 24px;
     font-size: 0.95rem;
   }
 
   .btn-large {
-    padding: 12px 30px;
-    font-size: 1.1rem;
+    padding: 12px 32px;
+    font-size: 1rem;
+  }
+
+  .page-header {
+    padding: 60px 0 40px;
+    margin-bottom: 40px;
   }
 
   .page-header h1 {
     font-size: 2rem;
+    margin-bottom: 0.5rem;
   }
 
   .page-header p {
     font-size: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Small Mobile Responsive */
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .main-content {
+    padding-top: 60px;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 9px 20px;
+    font-size: 0.9rem;
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .btn-large {
+    padding: 11px 28px;
+    font-size: 0.95rem;
+    display: block;
+    width: 100%;
+  }
+
+  .page-header {
+    padding: 50px 0 30px;
+    margin-bottom: 30px;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .page-header p {
+    font-size: 0.9rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
   }
 }
 
