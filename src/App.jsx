@@ -10,7 +10,7 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/photographer-portfolio/">
       <div className="App">
         <Navbar />
         <main className="main-content">
