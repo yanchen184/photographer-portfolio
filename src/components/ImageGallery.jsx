@@ -2,24 +2,15 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import portfolioConfig from '../config/portfolio.config.js';
 import './ImageGallery.css';
 
 const ImageGallery = ({ limit = null }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Gallery images data
-  const images = [
-    { id: 1, url: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800', category: 'wedding', title: '浪漫婚禮' },
-    { id: 3, url: 'https://images.unsplash.com/photo-1560439513-74b037a25d84?w=800', category: 'commercial', title: '商業攝影' },
-    { id: 4, url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800', category: 'landscape', title: '風景攝影' },
-    { id: 5, url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800', category: 'wedding', title: '婚禮時刻' },
-    { id: 6, url: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=800', category: 'portrait', title: '肖像作品' },
-    { id: 7, url: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800', category: 'commercial', title: '產品攝影' },
-    { id: 8, url: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800', category: 'landscape', title: '自然風光' },
-    { id: 9, url: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800', category: 'wedding', title: '幸福時光' }
-  ];
-
+  // Load gallery images from portfolio config
+  const images = portfolioConfig.gallery;
   const displayImages = limit ? images.slice(0, limit) : images;
 
   // Open lightbox

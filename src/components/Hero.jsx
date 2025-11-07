@@ -3,30 +3,13 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import portfolioConfig from '../config/portfolio.config.js';
 import './Hero.css';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const navigate = useNavigate();
-
-  // Hero slides data
-  const slides = [
-    {
-      image: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1920',
-      title: '專業攝影服務',
-      subtitle: '用鏡頭記錄您的精彩時刻'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1920',
-      title: '婚禮攝影專家',
-      subtitle: '讓愛情故事永恆流傳'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1920',
-      title: '商業攝影合作',
-      subtitle: '提升品牌視覺形象'
-    }
-  ];
+  const slides = portfolioConfig.heroSlides;
 
   // Auto slide change
   useEffect(() => {

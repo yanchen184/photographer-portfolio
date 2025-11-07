@@ -2,78 +2,11 @@
 import { motion } from 'framer-motion';
 import { FaCamera, FaCheck, FaClock, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import portfolioConfig from '../config/portfolio.config.js';
 import './Services.css';
 
 const Services = () => {
-  // Services data
-  const services = [
-    {
-      id: 1,
-      title: '婚禮攝影',
-      icon: '💒',
-      image: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600',
-      description: '記錄您人生中最重要的一天',
-      features: [
-        '全天候拍攝服務',
-        '婚前諮詢與場地勘察',
-        '專業後製修圖',
-        '精美相冊製作',
-        '線上相片瀏覽平台'
-      ],
-      packages: [
-        { name: '基本套餐', price: 'NT$ 30,000', hours: '6小時' },
-        { name: '標準套餐', price: 'NT$ 50,000', hours: '10小時' },
-        { name: '豪華套餐', price: 'NT$ 80,000', hours: '全天' }
-      ]
-    },
-    {
-      id: 3,
-      title: '商業攝影',
-      icon: '🏢',
-      image: 'https://images.unsplash.com/photo-1560439513-74b037a25d84?w=600',
-      description: '提升您的品牌形象',
-      features: [
-        '產品攝影',
-        '企業形象照',
-        '廣告拍攝',
-        '電商平台用圖',
-        '品牌視覺設計'
-      ],
-      packages: [
-        { name: '產品拍攝', price: 'NT$ 20,000', hours: '起' },
-        { name: '企業形象', price: 'NT$ 35,000', hours: '起' },
-        { name: '廣告拍攝', price: '客製報價', hours: '' }
-      ]
-    },
-    {
-      id: 4,
-      title: '活動攝影',
-      icon: '🎉',
-      image: 'https://images.unsplash.com/photo-1540390769625-2fc3f8b1d50c?w=600',
-      description: '完整記錄精彩活動',
-      features: [
-        '企業活動',
-        '演唱會',
-        '記者會',
-        '派對慶典',
-        '即時照片分享'
-      ],
-      packages: [
-        { name: '半天套餐', price: 'NT$ 15,000', hours: '4小時' },
-        { name: '全天套餐', price: 'NT$ 25,000', hours: '8小時' },
-        { name: '多日活動', price: '客製報價', hours: '' }
-      ]
-    }
-  ];
-
-  // Process steps
-  const processSteps = [
-    { icon: '📞', title: '初步諮詢', description: '了解您的需求和期望' },
-    { icon: '📝', title: '方案制定', description: '提供客製化的拍攝方案' },
-    { icon: '📸', title: '專業拍攝', description: '用心記錄每個珍貴時刻' },
-    { icon: '✨', title: '後製處理', description: '精心修圖確保完美呈現' },
-    { icon: '📦', title: '作品交付', description: '提供高品質的成品' }
-  ];
+  const { services, processSteps } = portfolioConfig;
 
   return (
     <div className="services-page">

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaTwitter, FaWhatsapp } from 'react-icons/fa';
+import portfolioConfig from '../config/portfolio.config.js';
 import './Contact.css';
 
 const Contact = () => {
@@ -9,13 +10,15 @@ const Contact = () => {
     name: '',
     email: '',
     phone: '',
-    service: 'wedding',
+    service: portfolioConfig.services[0].title,
     date: '',
     message: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+
+  const { contact, socialMedia, services } = portfolioConfig;
 
   // Handle form input changes
   const handleChange = (e) => {
@@ -38,7 +41,7 @@ const Contact = () => {
         name: '',
         email: '',
         phone: '',
-        service: 'wedding',
+        service: services[0].title,
         date: '',
         message: ''
       });
@@ -48,39 +51,39 @@ const Contact = () => {
     }, 2000);
   };
 
-  // Contact information
+  // Contact information from config
   const contactInfo = [
     {
       icon: <FaPhone />,
       title: '電話',
-      content: '+886 2 1234 5678',
-      link: 'tel:+886212345678'
+      content: contact.phone,
+      link: `tel:${contact.phone.replace(/\s/g, '')}`
     },
     {
       icon: <FaEnvelope />,
       title: 'Email',
-      content: 'info@johnphotography.com',
-      link: 'mailto:info@johnphotography.com'
+      content: contact.email,
+      link: `mailto:${contact.email}`
     },
     {
       icon: <FaMapMarkerAlt />,
       title: '地址',
-      content: '台北市信義區攝影街123號',
+      content: contact.address,
       link: 'https://maps.google.com'
     },
     {
       icon: <FaWhatsapp />,
       title: 'WhatsApp',
-      content: '+886 912 345 678',
-      link: 'https://wa.me/886912345678'
+      content: contact.whatsapp,
+      link: `https://wa.me/${contact.whatsapp.replace(/\s|\+/g, '')}`
     }
   ];
 
-  // Social media links
+  // Social media links from config
   const socialLinks = [
-    { icon: <FaFacebook />, url: 'https://facebook.com', label: 'Facebook' },
-    { icon: <FaInstagram />, url: 'https://instagram.com', label: 'Instagram' },
-    { icon: <FaTwitter />, url: 'https://twitter.com', label: 'Twitter' }
+    { icon: <FaFacebook />, url: socialMedia.facebook, label: 'Facebook' },
+    { icon: <FaInstagram />, url: socialMedia.instagram, label: 'Instagram' },
+    { icon: <FaTwitter />, url: socialMedia.twitter, label: 'Twitter' }
   ];
 
   return (
@@ -151,11 +154,11 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                     >
-                      <option value="wedding">婚禮攝影</option>
-                      <option value="portrait">人像攝影</option>
-                      <option value="commercial">商業攝影</option>
-                      <option value="event">活動攝影</option>
-                      <option value="other">其他</option>
+                      {services.map((service) => (
+                        <option key={service.id} value={service.title}>
+                          {service.title}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -251,9 +254,9 @@ const Contact = () => {
               <div className="business-hours">
                 <h3>營業時間</h3>
                 <ul>
-                  <li>週一至週五: 09:00 - 18:00</li>
-                  <li>週六: 10:00 - 16:00</li>
-                  <li>週日: 預約制</li>
+                  {contact.businessHours.map((hour, index) => (
+                    <li key={index}>{hour.day}: {hour.hours}</li>
+                  ))}
                 </ul>
               </div>
             </motion.div>
@@ -269,7 +272,7 @@ const Contact = () => {
             <h2>工作室位置</h2>
             <div className="map-container">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.7015096194024!2d121.56073631544666!3d25.044183783965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6e9d93249%3A0xd508f7b3aa02d931!2sTaipei%20101!5e0!3m2!1sen!2stw!4v1635959435073!5m2!1sen!2stw"
+                src={contact.googleMapsEmbed}
                 width="100%"
                 height="400"
                 style={{ border: 0 }}

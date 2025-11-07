@@ -2,46 +2,14 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaQuoteLeft, FaStar, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import portfolioConfig from '../config/portfolio.config.js';
 import './Testimonials.css';
 
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
-  // Testimonials data
-  const testimonials = [
-    {
-      id: 1,
-      name: '張小姐',
-      role: '新娘',
-      avatar: 'https://i.pravatar.cc/150?img=1',
-      rating: 5,
-      content: 'John的攝影技術真的太棒了！他完美地捕捉了我們婚禮的每一個感動時刻。照片的質感和構圖都超乎預期，強烈推薦給需要攝影服務的朋友們！'
-    },
-    {
-      id: 2,
-      name: '李先生',
-      role: '企業主',
-      avatar: 'https://i.pravatar.cc/150?img=2',
-      rating: 5,
-      content: '與John合作商業攝影是一次很棒的經驗。他不僅專業，而且充滿創意，為我們的產品拍出了極具吸引力的照片，大大提升了品牌形象。'
-    },
-    {
-      id: 3,
-      name: '王小姐',
-      role: '模特兒',
-      avatar: 'https://i.pravatar.cc/150?img=3',
-      rating: 5,
-      content: '作為模特兒，我與許多攝影師合作過，但John絕對是最出色的之一。他能夠創造輕鬆的拍攝氛圍，並指導我擺出最自然的姿勢。'
-    },
-    {
-      id: 4,
-      name: '陳先生',
-      role: '活動主辦方',
-      avatar: 'https://i.pravatar.cc/150?img=4',
-      rating: 5,
-      content: '我們聘請John為公司年會拍攝，他的表現超出預期。不僅準時專業，還能捕捉到活動中最精彩的瞬間。照片質量一流！'
-    }
-  ];
+  // Load testimonials from portfolio config
+  const testimonials = portfolioConfig.testimonials;
 
   // Navigation handlers
   const nextTestimonial = () => {

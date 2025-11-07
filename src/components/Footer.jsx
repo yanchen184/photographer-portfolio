@@ -1,17 +1,22 @@
 // Footer component for the photographer portfolio
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import portfolioConfig from '../config/portfolio.config.js';
 import './Footer.css';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { contact, socialMedia, photographer } = portfolioConfig;
 
-  // Social media links data
+  // Map social media config to icons
   const socialLinks = [
-    { icon: <FaFacebook />, url: 'https://facebook.com', label: 'Facebook' },
-    { icon: <FaInstagram />, url: 'https://instagram.com', label: 'Instagram' },
-    { icon: <FaTwitter />, url: 'https://twitter.com', label: 'Twitter' },
-    { icon: <FaYoutube />, url: 'https://youtube.com', label: 'YouTube' }
+    { icon: <FaFacebook />, url: socialMedia.facebook, label: 'Facebook' },
+    { icon: <FaInstagram />, url: socialMedia.instagram, label: 'Instagram' },
+    { icon: <FaTwitter />, url: socialMedia.twitter, label: 'Twitter' },
+    { icon: <FaYoutube />, url: socialMedia.youtube, label: 'YouTube' }
   ];
+
+  // Extract service titles from services array
+  const serviceList = portfolioConfig.services.map(service => service.title);
 
   return (
     <footer className="footer">
@@ -22,15 +27,15 @@ const Footer = () => {
           <div className="contact-info">
             <div className="contact-item">
               <FaMapMarkerAlt className="contact-icon" />
-              <span>台北市信義區攝影街123號</span>
+              <span>{contact.address}</span>
             </div>
             <div className="contact-item">
               <FaPhone className="contact-icon" />
-              <span>+886 2 1234 5678</span>
+              <span>{contact.phone}</span>
             </div>
             <div className="contact-item">
               <FaEnvelope className="contact-icon" />
-              <span>info@johnphotography.com</span>
+              <span>{contact.email}</span>
             </div>
           </div>
         </div>
@@ -50,10 +55,9 @@ const Footer = () => {
         <div className="footer-section">
           <h3>服務項目</h3>
           <ul className="footer-links">
-            <li>婚禮攝影</li>
-            <li>人像攝影</li>
-            <li>商業攝影</li>
-            <li>活動攝影</li>
+            {serviceList.map((service, index) => (
+              <li key={index}>{service}</li>
+            ))}
           </ul>
         </div>
 
@@ -90,7 +94,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="footer-bottom">
-        <p>&copy; {currentYear} John Photography. 版權所有</p>
+        <p>&copy; {currentYear} {photographer.name} Photography. 版權所有</p>
       </div>
     </footer>
   );

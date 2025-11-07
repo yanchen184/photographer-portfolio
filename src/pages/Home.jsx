@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaCamera, FaAward, FaUsers, FaImages } from 'react-icons/fa';
+import portfolioConfig from '../config/portfolio.config.js';
 import Hero from '../components/Hero';
 import ImageGallery from '../components/ImageGallery';
 import Testimonials from '../components/Testimonials';
@@ -16,13 +17,15 @@ const Home = () => {
     photos: 0
   });
 
+  const { photographer, statistics } = portfolioConfig;
+
   // Animate statistics on mount
   useEffect(() => {
     const targetStats = {
-      projects: 500,
-      clients: 200,
-      awards: 15,
-      photos: 10000
+      projects: statistics.completedProjects,
+      clients: statistics.satisfiedClients,
+      awards: statistics.awards,
+      photos: statistics.totalPhotos
     };
 
     const duration = 2000; // 2 seconds
@@ -45,7 +48,7 @@ const Home = () => {
     }, stepDuration);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [statistics]);
 
   // Statistics data
   const statsData = [
@@ -72,7 +75,7 @@ const Home = () => {
             <div className="about-text">
               <h2>捕捉生命中的美好瞬間</h2>
               <p>
-                我是 John，一位熱愛攝影的專業攝影師。擁有超過10年的攝影經驗，
+                我是 {photographer.name}，一位熱愛攝影的專業攝影師。擁有超過{photographer.experience}年的攝影經驗，
                 專注於人像、婚禮、商業和風景攝影。我相信每一張照片都能訴說一個故事，
                 每一個瞬間都值得被永恆記錄。
               </p>
@@ -82,7 +85,7 @@ const Home = () => {
             </div>
             <div className="about-image">
               <img
-                src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=500"
+                src={photographer.profileImage}
                 alt="Photographer"
               />
             </div>
@@ -128,30 +131,16 @@ const Home = () => {
         <div className="container">
           <h2>服務項目</h2>
           <div className="services-grid">
-            <div className="service-card">
-              <img
-                src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=400"
-                alt="Wedding Photography"
-              />
-              <h3>婚禮攝影</h3>
-              <p>記錄您人生中最重要的時刻</p>
-            </div>
-            <div className="service-card">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400"
-                alt="Portrait Photography"
-              />
-              <h3>人像攝影</h3>
-              <p>展現您最美的一面</p>
-            </div>
-            <div className="service-card">
-              <img
-                src="https://images.unsplash.com/photo-1560439513-74b037a25d84?w=400"
-                alt="Commercial Photography"
-              />
-              <h3>商業攝影</h3>
-              <p>提升您的品牌形象</p>
-            </div>
+            {portfolioConfig.services.slice(0, 3).map((service) => (
+              <div key={service.id} className="service-card">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                />
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </div>
+            ))}
           </div>
           <Link to="/services" className="btn-primary">
             查看所有服務
